@@ -1,13 +1,23 @@
 code works by executing main.m
+
 variables should be altered inside main.m file, they are described with comments inside the code
+
 works on MATLAB
+
 can work in parallel or on a single core
+
 solution of radiative transfer equation in one layer pigmented plane parallel medium
+
 ray is incident from air to coating. coating is coated on a substrate
+
 substrate could be air or other material such as silver, glass etc.
+
 the code estimates spectral hemispherical reflectance, transmittance and absorptance
+
 can handle; independent scattering, boundary reflections, absorption in medium. 
+
 can't handle; coherent backscattering, dependent scattering and polarized ray tracing.
+
 while calculating the scattering direction the code uses cumulative inverse relation of exact single scattering pahse function or henyey greenstein function approximation depending on choice 
 
 a similar version works on GPU is here: https://github.com/refetaliyalcin/ColorRCMC
