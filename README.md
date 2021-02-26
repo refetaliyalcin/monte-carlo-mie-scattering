@@ -6,7 +6,7 @@ works on MATLAB
 
 can work in parallel or on a single core
 
-solution of radiative transfer equation in one layer pigmented plane parallel medium
+solution of radiative transfer equation in one layer pigmented plane parallel medium using Lorenz Mie theory
 
 ray is incident from air to coating. coating is coated on a substrate
 
