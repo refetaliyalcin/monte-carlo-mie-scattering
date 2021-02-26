@@ -1,21 +1,21 @@
 function alive=snell(s_z,n_medium,k_medium,n_subs,k_subs)
 % n_medium,k_medium,n_subs,k_subs
     cos_teta=abs(s_z);
-    if (s_z>0) % dostumuzu dü?man?m?z? çevremizi tan?yal?m, nereye gidiyoruz?
-       n_outside=n_subs; % a?a?? gidiyoruz o zaman d??ar?s? substrat
+    if (s_z>0) % where are we going
+       n_outside=n_subs; % if bottom, outside is substrat
        k_outside=k_subs; 
     else
-       n_outside=1; % yukar? gidiyoruz o zaman d??ar?s? hava
+       n_outside=1; % else it is air
        k_outside=0;
     end
-    if (n_outside==n_medium && k_outside==k_medium) % n'ler ayniysa pasaport sorma dogrudan geç
+    if (n_outside==n_medium && k_outside==k_medium) % if mediums are same transmit directly
         reflectance=0;
-    elseif (cos_teta>0.9999) %dik gelmissen açiyi karistirma
+    elseif (cos_teta>0.9999) %if normal incidence things are easier
         reflectance=((n_medium-n_outside)^2+(k_medium-k_outside)^2)/((n_medium+n_outside)^2+(k_medium+k_outside)^2);
-    elseif (cos_teta<(0.0001)) %paralel gelmissen yansit
+    elseif (cos_teta<(0.0001)) %if parallel reflect
         reflectance=1;
     else
-        % genel durum bu howell 5th ed. sahife 741
+        % general case radiative heat transfer howell 5th ed. page 741
         sin_teta=sqrt(1-cos_teta*cos_teta);
         carpan2=(n_medium-1i*k_medium)/(n_outside-1i*k_outside);
         sin_x2=sin_teta*carpan2;
@@ -29,10 +29,10 @@ function alive=snell(s_z,n_medium,k_medium,n_subs,k_subs)
     Rastgele=rand();
     
     if Rastgele>reflectance
-        %geçer gider
+        %escape
         alive=0;
     else
-        %yansir
+        %trapped and reflect
         alive=1;
     end
  end 
