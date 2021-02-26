@@ -2,7 +2,7 @@ clc
 clear all
 close all
 
-%solution of radiative transfer equation in one layer plane parallel medium
+%solution of radiative transfer equation in one layer pigmented plane parallel medium
 %ray is incident from air to coating. coating is coated on a substrate
 %substrate could be air or other material such as silver, glass etc.
 %the code estimates spectral hemispherical reflectance, transmittance and absorptance
@@ -17,7 +17,7 @@ thickness=100*10^-6;  %thickness of coating in meter
 radius=120*10^-9; %radius of particle in meter 
 f_v=0.01; %volume fraction. 0.01 corresponds to 1% 
 polar_angle=linspace(0,89.99999,9); %incident angles. 0 = perpendicular to slab face. 90 parallel and should be avoided.
-use_HG=1; %if 0 use exact scattering phase function, if 1 uses henyey greenstein phase function approximation
+use_HG=0; %if 0 use exact scattering phase function, if 1 uses henyey greenstein phase function approximation
 
 
 n_pigment=sio2_n(lambda);  %real refractive index of pigment
@@ -37,7 +37,7 @@ polar_angle_rad=polar_angle*pi/180;
 
 % calculate surface reflection from air to medium. 
 % medium to air and medium to substrate is calculated within snell.m.
-% air to medium is calculated seperately since we need refraction angle
+% air to medium is calculated here seperately since we need refraction angle
 teta_prime=zeros(length(lambda),length(polar_angle));
 sur_reflection=zeros(length(lambda),length(polar_angle));
 for i=1:length(lambda)
