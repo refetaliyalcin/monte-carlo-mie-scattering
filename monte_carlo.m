@@ -43,7 +43,11 @@ for i=1:photon_number
             alive=snell(s_z,n_medium,k_medium,n_subs,k_subs);% check if the ray can leave the medium or not
             if (alive==0)
                 if s_z>0
-                    t_no=1;%it left from bottom so transmitted
+                    if k_subs==0
+                        t_no=1;%it left from bottom and bottom is not absorbing so transmitted
+                    else
+                        a_no=1;%it left from bottom and bottom is absorbing so absorbed
+                    end
                 else
                     r_no=1;%it left from top so reflected
                 end
